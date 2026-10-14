@@ -1,0 +1,12 @@
+{
+    "KPackageStructure": "Plasma/Wallpaper",
+    "KPlugin": {
+        "Id": "org.happyhobo.hyperlane",
+        "Name": "Hyperlane",
+        "Description": "A live, GPU-rendered flight down a neon corridor",
+        "Icon": "preferences-desktop-wallpaper",
+        "EnabledByDefault": true,
+        "License": "MIT",
+        "Website": ""
+    }
+}
