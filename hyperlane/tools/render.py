@@ -112,9 +112,11 @@ VERTEX_SRC = """
 #version 450 core
 layout(location = 0) out vec2 qt_TexCoord0;
 void main() {
-    // Oversized triangle covering the viewport; texcoords span 0..1.
+    // Oversized triangle covering the viewport; texcoords span 0..1. Qt
+    // Quick puts texcoord y = 0 at the top of the item, so flip y to match;
+    // the read-back image is flipped again below, top row first.
     vec2 p = vec2((gl_VertexID << 1) & 2, gl_VertexID & 2);
-    qt_TexCoord0 = p;
+    qt_TexCoord0 = vec2(p.x, 1.0 - p.y);
     gl_Position = vec4(p * 2.0 - 1.0, 0.0, 1.0);
 }
 """

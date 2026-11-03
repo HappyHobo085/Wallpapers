@@ -20,6 +20,11 @@ about 0.3 ms per frame at 1920x1080 on an RTX 3060 Ti.
   context menu) for *Toggle Warp Speed*, which switches between a cruise and a
   hard burn.
 
+
+It pauses while its screen is completely hidden behind app windows (on the
+current virtual desktop and activity), so it costs nothing behind a
+maximized, fullscreen or tiled set of windows. Translucent windows count as covering.
+
 ## Tuning it live
 
 Select *Hyperlane* in Desktop Settings → Wallpaper and the panel beside the
@@ -48,7 +53,9 @@ editing `contents/ui/scene.frag`, then:
 `build.sh` bakes `scene.frag` into `scene.frag.qsb` (Qt 6 requires shader
 packages rather than inline GLSL), renders `contents/preview.png` with the
 offscreen renderer in `tools/render.py`, and installs or upgrades the package
-into `~/.local/share/plasma/wallpapers/`.
+into `~/.local/share/plasma/wallpapers/`. If Hyperlane is on a desktop it then restarts
+plasmashell, which keeps the old shader loaded otherwise; `NO_RELOAD=1
+./build.sh` skips that.
 
 To try a look without installing it, render a single frame with the same
 overrides the settings panel offers:

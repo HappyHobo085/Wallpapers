@@ -29,12 +29,19 @@ WallpaperItem {
         }
     ]
 
+    // Fully hidden behind app windows: stop animating.
+    // Nothing then changes, so nothing is redrawn.
+    CoverWatch {
+        id: cover
+    }
+    readonly property bool paused: cover.covered
+
     // Advancing a shader-effect property marks the item dirty, so a plain
     // timer is all that is needed to drive the animation at a fixed rate.
     Timer {
         interval: root.frameInterval
         repeat: true
-        running: true
+        running: !root.paused
         triggeredOnStart: true
         onTriggered: root.clock += (interval / 1000) * root.speed
     }

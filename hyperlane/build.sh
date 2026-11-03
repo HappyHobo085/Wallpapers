@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # Bake the shader, refresh the preview, and (re)install the package.
 #
-#   ./build.sh          bake + preview + install
+#   ./build.sh          bake + preview + install, then restart plasmashell
+#                       if this wallpaper is in use (NO_RELOAD=1 skips that)
 #   ./build.sh bake     just recompile scene.frag -> scene.frag.qsb
 #
 # Requires: qsb (Qt Shader Baker, package qt6-qtshadertools) and, for the
@@ -35,10 +36,25 @@ install_pkg() {
     fi
 }
 
+# A running plasmashell keeps the old shader and QML loaded, so restart it,
+# but only when this wallpaper is on a desktop; otherwise nothing would change
+# and the desktop would blink for no reason. NO_RELOAD=1 skips it.
+reload() {
+    local rc="${XDG_CONFIG_HOME:-$HOME/.config}/plasma-org.kde.plasma.desktop-appletsrc"
+    if [ -n "${NO_RELOAD:-}" ]; then
+        echo "NO_RELOAD set; restart plasmashell yourself to see the change"
+    elif grep -qx 'wallpaperplugin=org.happyhobo.hyperlane' "$rc" 2>/dev/null; then
+        echo "org.happyhobo.hyperlane is in use; restarting plasmashell"
+        systemctl --user restart plasma-plasmashell
+    else
+        echo "org.happyhobo.hyperlane is not in use; no restart needed"
+    fi
+}
+
 case "${1:-all}" in
     bake)    bake ;;
     preview) bake; preview "${2:-45}" ;;
-    *)       bake; preview "${2:-45}"; install_pkg ;;
+    *)       bake; preview "${2:-45}"; install_pkg; reload ;;
 esac
 
 echo "done"

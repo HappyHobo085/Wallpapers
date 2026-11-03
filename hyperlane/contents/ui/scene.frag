@@ -193,6 +193,9 @@ vec3 hyperdriveCore(vec2 uv, float t) {
 void main() {
     // Screen uv, centred.
     vec2 uv = (qt_TexCoord0 - 0.5) * vec2(u_aspect, 1.0);
+    // Qt Quick's texcoord y runs down the item; flip it so +y is up and the
+    // polished floor (face 3, y < 0) sits at the bottom of the screen.
+    uv.y = -uv.y;
 
     float t = u_time;
     float camZ = mod(t * u_zspeed, u_zwrap);
