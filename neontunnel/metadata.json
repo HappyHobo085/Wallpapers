@@ -1,0 +1,12 @@
+{
+    "KPackageStructure": "Plasma/Wallpaper",
+    "KPlugin": {
+        "Id": "org.happyhobo.neontunnel",
+        "Name": "Neon Tunnel",
+        "Description": "An audio-reactive flight down an octagonal tunnel of violet neon",
+        "Icon": "preferences-desktop-wallpaper",
+        "EnabledByDefault": true,
+        "License": "MIT",
+        "Website": ""
+    }
+}
