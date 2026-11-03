@@ -1,0 +1,12 @@
+{
+    "KPackageStructure": "Plasma/Wallpaper",
+    "KPlugin": {
+        "Id": "org.happyhobo.eclipse",
+        "Name": "Eclipse",
+        "Description": "An audio-reactive red eclipse at the bottom of a crater of teal blocks",
+        "Icon": "preferences-desktop-wallpaper",
+        "EnabledByDefault": true,
+        "License": "MIT",
+        "Website": ""
+    }
+}

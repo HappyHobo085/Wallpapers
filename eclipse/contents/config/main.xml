@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+      http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
+  <kcfgfile name=""/>
+
+  <group name="General">
+    <entry name="Speed" type="Double">
+      <label>Base flight speed, units per second</label>
+      <default>0.8</default>
+    </entry>
+    <entry name="Reactivity" type="Double">
+      <label>Multiplier on the audio levels</label>
+      <default>1.0</default>
+    </entry>
+    <entry name="Hue" type="Double">
+      <label>Palette rotation in degrees</label>
+      <default>0.0</default>
+    </entry>
+    <entry name="CameraDistance" type="Double">
+      <label>Camera distance from the eclipse; 1 is the closest</label>
+      <default>1.0</default>
+    </entry>
+    <entry name="DepthOfField" type="Double">
+      <label>Depth-of-field blur strength; 0 turns it off</label>
+      <default>1.0</default>
+    </entry>
+    <entry name="RenderScale" type="Double">
+      <label>Fraction of screen resolution to render at; lower is cheaper</label>
+      <default>1.0</default>
+    </entry>
+    <entry name="FPS" type="Int">
+      <label>Animation frame cap; lower it to save power</label>
+      <default>60</default>
+    </entry>
+  </group>
+</kcfg>
