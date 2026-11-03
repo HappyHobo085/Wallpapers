@@ -1,0 +1,12 @@
+[Unit]
+Description=Audio spectrum feed for audio-reactive wallpapers
+Requires=audiopulse.socket
+After=audiopulse.socket pipewire.service
+
+[Service]
+# Started on the first connection to audiopulse.socket; exits by itself after
+# 10 s without clients, and systemd starts it again on the next connection.
+ExecStart=%h/.local/bin/audiopulse
+Restart=on-failure
+RestartSec=2
+NoNewPrivileges=yes

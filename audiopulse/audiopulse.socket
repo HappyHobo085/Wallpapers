@@ -1,0 +1,9 @@
+[Unit]
+Description=Audio spectrum feed for audio-reactive wallpapers (socket)
+
+[Socket]
+# Loopback only. audiopulse also refuses browser clients (any Origin header).
+ListenStream=127.0.0.1:47800
+
+[Install]
+WantedBy=sockets.target
